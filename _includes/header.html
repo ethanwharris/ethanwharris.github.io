@@ -9,13 +9,14 @@
       {% for link in site.navigation %}
         {% assign current = nil %}
         {% if page.url == link.url %}
-          {% assign active = 'active' %}
-          {% assign current = '<span class=\"sr-only\">(current)</span>' %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ link.url }}">{{ link.text }} <span class="sr-only">(current)</span></a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ link.url }}">{{ link.text }}</a>
+          </li>
         {% endif %}
-
-        <li class="nav-item {{ active }}">
-          <a class="nav-link" href="{{ link.url }}">{{ link.text }} {{ current }}</a>
-        </li>
       {% endfor %}
     </ul>
   </div>

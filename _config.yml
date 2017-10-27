@@ -6,7 +6,7 @@ linkedin_username:  ethanwharris
 
 navigation:
 - text: Home
-  url: /home/
+  url: /
 - text: Blog
   url: /blog/
 
