@@ -8,7 +8,7 @@ navigation:
 - text: Home
   url: /
 - text: Blog
-  url: /blog/
+  url: /blog.html
 
 # Build settings
 plugins:
