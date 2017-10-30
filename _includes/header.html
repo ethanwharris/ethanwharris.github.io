@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <span class="navbar-brand mb-0 h1">Ethan Harris</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       {% for link in site.navigation %}
-        {% if page.url == link.url %}
+        {% if page.url == link.url or page.layout == link.layout %}
           <li class="nav-item active">
             <a class="nav-link" href="{{ link.url | remove: '.html' }}">{{ link.text }} <span class="sr-only">(current)</span></a>
           </li>

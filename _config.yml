@@ -9,6 +9,7 @@ navigation:
   url: /
 - text: Blog
   url: /blog.html
+  layout: post
 
 # Build settings
 plugins:
