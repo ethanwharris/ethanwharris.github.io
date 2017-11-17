@@ -1,0 +1,44 @@
+---
+layout: post
+title:  "[WIP] Analysis of a Four-Layer Series-Coupled Perceptron. II"
+excerpt: "Understanding the maths of Block, Knight and Rosenblatt"
+date:   2017-11-17 11:00:00
+mathjax: true
+---
+In this post we will study and attempt to understand the maths in the paper ["Analysis of a Four-Layer Series-Coupled Perceptron. II"](https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.34.135). The paper discusses a Multilayer Perceptron not too dissimilar from the neural networks of today; trained in an unsupervised setting. It could even be argued that this paper presents one of the earliest examples of what may be described as deep learning. It also attempts to proves several properties of the network using maths that is obfuscated to say the least. We will attempt to understand this maths and show all of the derivations and transitions along the way.
+
+# Introduction
+
+The introduction of the paper discusses a 'cross-coupled' network, analagous to having a layer which is fully connected to itself. In a previous paper this network was studied and shown to have the ability to generalize over its inputs (stimuli in the paper). The authors then go on to introduce the main focus of the paper; to prove this property in a more rigorous fashion for a simpler 'series-coupled' network. A 'series-coupled' network is a more traditional perceptron without the recurrent connections.
+
+# The Model
+
+In this section the authors introduce the model that will be studied in the paper. As we have already stated, this is a 'series-copupled' network. In other words, a feed-forward neural network. Here we have a sensory field that is arbitrarily connected to an 'Associator Unit' (read: neruon) in the first layer. A way to model these connections is to think of the inputs as being fully connected (for each pixel) to the first layer with weights that are all either \\(1\\), \\(0\\) or \\(-1\\) (predominantly zero to model sparse connectivity).
+
+Next we have two 'Associator' layers. The authors state that units in the first layer are in one-to-one correspondence with those in the second layer. Interpret this to mean that each layer has an equal number of neurons. The activation of the units is a step function with threshold \\(\theta\\). The threshold is constant for the operation of the network, it does not change with time. It is not stated whether \\(\theta\\) is defined globally or layer-wise. However, this has no effect on the maths.
+
+When a neuron in the first associator layer fires (i.e. its total input from the sensory field is greater than \\(\theta\\)), it transmits a signal of \\(\theta\\) to the corresponding neuron in the second layer. It also transmits some weight to all neurons in the second layer (including its counterpart). We can picture this as the first layer being fully connected to the second layer with weights \\(\upsilon_{\mu\nu} \in \Upsilon\\) where the all values are initially \\(0\\). The motivation for having the additional \\(\theta\\) transmission is not entirely clear. Certainly, the necessary maths is more complex as a result and there is no clear basis for such behaviour in the field of neuroscience. It seems that this transmission is there purely to ensure that the neurons in the second layer have some activation for training puroses.
+
+## Training
+
+The training of the neural network (described as changes to \\(\Upsilon\\) over time) consists of two main update rules (with corresponding learning rates \\(\eta\\) and \\(\delta\\)).
+
+The first rule is derived from the well known Hebbian learning principle in neuroscience (also known as Hebb's postulate). This rule is often characterised by the phrase "neurons that fire together, wire together" and states that the 'strength' of a synapse which connects two neurons is increased if the pre-synaptic neuron fires before the post-synaptic neuron. That is, if the pre-synaptic neuron contributes to the activation of the post-synaptic neuron, we increase the weight. In the paper, the authors define this as follows. If some first layer neuron \\(a_\mu^I \in A^I\\) is active at time \\(t\\) and some second layer neuron \\(a_\nu^{II} \in A^{II}\\) is active at time \\(t + \Delta t\\) then the connection weight (\\(\upsilon_{\mu\nu}\\)) recieves an increment of \\(\eta\times\Delta t\\).
+
+---
+<!-- Let's test some inline math $x$, $y$, $x_1$, $y_1$.
+
+Now a inline math with special character: $|\psi\rangle$, $x'$, $x^\*$.
+
+Test a display math:
+$$
+   |\psi_1\rangle = a|0\rangle + b|1\rangle
+$$
+Is it O.K.?
+
+Test a display math with equation number:
+\begin{equation}
+   |\psi_1\rangle = a|0\rangle + b|1\rangle
+\end{equation}
+Is it O.K.? -->
+---
