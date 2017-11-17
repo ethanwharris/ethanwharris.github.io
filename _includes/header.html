@@ -1,6 +1,22 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <span class="navbar-brand mb-0 h1">Ethan Harris</span>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      Ethan Harris
+    </a>
+    <span>
+      {% if site.github_username %}
+        <a class="navbar-brand" href="https://github.com/{{ site.github_username }}">
+          <i class="fa fa-github"></i>
+        </a>
+      {% endif %}
+      {% if site.linkedin_username %}
+        <a class="navbar-brand" href="https://linkedin.com/in/{{ site.linkedin_username }}">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      {% endif %}
+    </span>
+  </div>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -18,5 +34,5 @@
         {% endif %}
       {% endfor %}
     </ul>
-  </div>
+  </div> -->
 </nav>
