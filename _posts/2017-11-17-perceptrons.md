@@ -31,12 +31,30 @@ The second rule is merely a decrement rule. If we are to only increment weights 
 
 # Analysis
 
-For this section we will focus on the maths, deriving each equation as we go. In equation 1 we can omit the index of the current stimulus (\\(i\\)) and instead simply say that we are definining the total input to a given node in the second layer (\\(\alpha_\nu\\)) for some input stimulus \\(i\\).
+For this section we will focus on the maths, deriving each equation as we go. In equation 1 we are definining the total input to a given node in the second layer (\\(\alpha_\nu\\)) for some input stimulus \\(i\\).
 
 \begin{equation} \tag{1}
-   \alpha_\nu\(t\)=\theta e_\nu + \sum_{\mu} \upsilon_{\mu\nu}\(t\) e_\mu
+   \alpha_\nu^i\(t\) = \theta e_{\nu i} + \sum_{\mu} \upsilon_{\mu\nu}\(t\) e_{\mu i}
 \end{equation}
 
-In words, this equation states that we have an input of \\(\theta\\) if the corresponding layer one neuron is active and also an have input of \\(\upsilon_{\mu\nu}\\) for each active neuron (\\(\alpha_\mu\\)) in the first layer.
+In words, this equation states that we have an input of \\(\theta\\) if the corresponding layer one neuron is active and also an have input of \\(\upsilon_{\mu\nu}\\) for each active neuron (\\(\alpha_\mu^i\\)) in the first layer.
 
 Equations 2, 3 and 4 simply redifine the \\(\theta\\) signal as a bias term \\(\beta_\nu\\) and the weighted sum as a function of time \\(\gamma_\nu\(t\)\\).
+
+\begin{equation} \tag{2}
+   \beta_\nu^i = \theta e_{\nu i}
+\end{equation}
+
+\begin{equation} \tag{3}
+   \gamma_\nu^i\(t\)=\sum_{\mu} \upsilon_{\mu\nu}\(t\) e_{\mu i}
+\end{equation}
+
+\begin{equation} \tag{4}
+   \alpha_\nu^i\(t\)=\beta_\nu^i + \gamma_\nu^i\(t\)
+\end{equation}
+
+In the next step the authors obtain an expression for the difference between the weights in the second layer over a single time step. Specifically, moving from \\(t_0 + \Delta t\\) with stimulus \\(j\\) to \\(t_0 + 2\Delta t\\) with stimulus \\(k\\), what is the change in the connection weight (\\(\upsilon_{\mu\nu}\\)) between units \\(\alpha_\mu^I\\) and \\(\alpha_\nu^{II}\\). Note that we define a threshold function (\\(\Phi\(x\)\\)) here which outputs \\(1\\) if \\(x \geq \theta\\) and \\(0\\) otherwise.
+
+\begin{equation} \tag{5}
+   \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) - \upsilon_{\mu\nu}\(t_0 + \Delta t\) = \(\eta\Delta t\) \(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\] - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)
+\end{equation}
