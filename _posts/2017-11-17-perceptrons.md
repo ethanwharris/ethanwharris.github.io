@@ -4,6 +4,7 @@ title:  "[WIP] Analysis of a Four-Layer Series-Coupled Perceptron. II"
 excerpt: "Understanding the maths of Block, Knight and Rosenblatt"
 date:   2017-11-17 11:00:00
 mathjax: true
+comments: true
 ---
 In this post we will study and attempt to understand the maths in the paper ["Analysis of a Four-Layer Series-Coupled Perceptron. II"](https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.34.135). The paper discusses a Multilayer Perceptron not too dissimilar from the neural networks of today; trained in an unsupervised setting. It could even be argued that this paper presents one of the earliest examples of what may be described as deep learning. It also attempts to proves several properties of the network using maths that is obfuscated to say the least. We will attempt to understand this maths and show all of the derivations and transitions along the way.
 
