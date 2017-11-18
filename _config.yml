@@ -3,6 +3,9 @@ compress_html:
   comments: ["<!-- ", " -->"]
   endings: all
   startings: [html, head, body]
+  
+sass:
+  style: compressed
 
 title: Ethan Harris
 description: A blog relating to Deep Learning and all things Computer Science
