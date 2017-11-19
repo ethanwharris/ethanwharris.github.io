@@ -23,8 +23,6 @@ navigation:
   layout: post
 
 # Build settings
-includes:
-  - fonts
 plugins:
   - jekyll-seo-tag
 markdown: kramdown

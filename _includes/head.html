@@ -21,12 +21,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   
-  <style type="text/css">
-    {% capture include_to_scssify %}
-	  {% include font-awesome.scss %}
-    {% endcapture %}
-    {{ include_to_scssify | scssify }}
-  </style>
+  <noscript id="deferred-styles">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </noscript>
+  <script>
+    var loadDeferredStyles = function() {
+	  var addStylesNode = document.getElementById("deferred-styles");
+	  var replacement = document.createElement("div");
+	  replacement.innerHTML = addStylesNode.textContent;
+	  document.body.appendChild(replacement)
+	  addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+	    webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+  </script>
   
   <style type="text/css">
     {% capture include_to_scssify %}
