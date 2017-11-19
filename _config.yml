@@ -24,7 +24,7 @@ navigation:
 
 # Build settings
 includes:
-  - fonts
+  - font-awesome
 plugins:
   - jekyll-seo-tag
 markdown: kramdown
