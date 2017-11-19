@@ -22,10 +22,10 @@ navigation:
   url: /blog.html
   layout: post
 
-# Build settings
 plugins:
   - jekyll-seo-tag
 markdown: kramdown
+permalink: pretty
 exclude:
   - Gemfile
   - Gemfile.lock
