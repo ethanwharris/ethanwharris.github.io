@@ -17,7 +17,7 @@ layout: post
   {% for _line in _lines %}
     {% unless _line == _lastline %}
       {% assign _id = _line | split: 'id="' | last | split: '"' | first %}
-      {% assign _link = '<a href="#' | append: _id | append: '"><i class="fa fa-link"></i></a>' %}
+      {% assign _link = ' <a href="#' | append: _id | append: '"><i class="head-link fa fa-link"></i></a>' %}
       {% assign _newcontent = _newcontent | append: _line | append: _link | append: _tag %}
     {% endunless %}
   {% endfor %}
