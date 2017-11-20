@@ -64,40 +64,26 @@ In words, equation 5 states that the change in the weight for a particular conne
 
 For the next step, the authors obtain an expression for the change in total weight input (\\(\gamma_\nu^i\\)) to a unit (\\(a_\nu^{II}\\)) in the second layer over one timestep. This derivation is somewhat straight-forward. However, I said we'd look at all the maths, simple or otherwise. So, we begin with our expression from equation 3 and take the difference between \\(t_0 + 2\Delta t\\) and \\(t_0 + \Delta t\\) as in equation 5.1. Next, as addition and subtraction are associative, we can compress the sum to obtain equation 5.2. Finally, as in the paper, we can expand out the \\(e_{\mu i}\\) term to form equation 5.3.
 
-\begin{equation} \tag{5.1}
-   \gamma_\nu^i\(t_0 + 2\Delta t\) - \gamma_\nu^i\(t_0 + \Delta t\)=\sum_{\mu} \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) e_{\mu i} - \sum_{\mu} \upsilon_{\mu\nu}\(t_0 + \Delta t\) e_{\mu i}
-\end{equation}
-
-\begin{equation} \tag{5.2}
-   =\sum_{\mu} \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) e_{\mu i} - \upsilon_{\mu\nu}\(t_0 + \Delta t\) e_{\mu i}
-\end{equation}
-
-\begin{equation} \tag{5.3}
-   =\sum_{\mu} \[\upsilon_{\mu\nu}\(t_0 + 2\Delta t\) - \upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}
-\end{equation}
+\begin{align}\nonumber
+  \gamma_\nu^i\(t_0 + 2\Delta t\) &- \gamma_\nu^i\(t_0 + \Delta t\) \\\\ & =\sum_{\mu} \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) e_{\mu i} - \sum_{\mu} \upsilon_{\mu\nu}\(t_0 + \Delta t\) e_{\mu i}\tag{5.1}
+  \\\\ & =\sum_{\mu} \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) e_{\mu i} - \upsilon_{\mu\nu}\(t_0 + \Delta t\) e_{\mu i}\tag{5.2}
+  \\\\ & =\sum_{\mu} \[\upsilon_{\mu\nu}\(t_0 + 2\Delta t\) - \upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}\tag{5.3}
+\end{align}
 
 We now substitute equation 5 back into equation 5.3, giving equation 5.4. Next we expand the sum to give equations 5.5 and 5.6. As \\(\eta\Delta t\\), \\(\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\\) and \\(\delta\Delta t\\) are not dependant on \\(\mu\\), we can move them outside of their respective sums to give equation 5.7 as in the paper.
 
-\begin{equation} \tag{5.4}
-   =\sum_{\mu} \[\(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\] - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}
-\end{equation}
-
-\begin{equation} \tag{5.5}
-   =\sum_{\mu} \(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\(e_{\mu i}\) - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
-\end{equation}
-
-\begin{equation} \tag{5.6}
-   =\sum_{\mu} \(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\(e_{\mu i}\) - \sum_{\mu}\(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
-\end{equation}
-
-\begin{equation} \tag{5.7}
-   =\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\sum_{\mu} e_{\mu j}e_{\mu i} - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
-\end{equation}
+\begin{align}\nonumber
+   & =\sum_{\mu} \[\(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\] - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}\tag{5.4}
+   \\\\ & =\sum_{\mu} \(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\(e_{\mu i}\) - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)\tag{5.5}
+   \\\\ & =\sum_{\mu} \(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\(e_{\mu i}\) - \sum_{\mu}\(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)\tag{5.6}
+   \\\\ & =\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\sum_{\mu} e_{\mu j}e_{\mu i} - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)\tag{5.7}
+\end{align}
 
 Next, we define \\(n_{ij}^I\\) to be the number of associator units in the first layer (\\(A^I\\)) which are active for both stimulus \\(i\\) and stimulus \\(j\\) to give equation 6 from the paper
 
-\begin{equation} \tag{6}
-   \gamma_\nu^i\(t_0 + 2\Delta t\) - \gamma_\nu^i\(t_0 + \Delta t\)=\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]n_{ij}^I - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
-\end{equation}
+\begin{align}\nonumber
+   \gamma_\nu^i\(t_0 + 2\Delta t\) &- \gamma_\nu^i\(t_0 + \Delta t\)
+   \\\\ & =\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]n_{ij}^I - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)\tag{6}
+\end{align}
 
 where \\(n_{ij}^I = \sum_{\mu} e_{\mu j}e_{\mu i}\\).
