@@ -102,10 +102,7 @@ The authors now say that we divide by \\(M\Delta t\\) and take \\(\lim_{\Delta t
 
 Dividing by \\(M\Delta t\\), we obtain equation 8.1. Then we set \\(\Delta t\\) to zero to reach equation 9. Note that we accumulate \\(\frac{\delta\gamma_\nu^i\(t\)}{M}\\) \\(M\\) times and therefore we can simply move it outside of the sum as it does not depend on \\(m\\).
 
-\begin{equation}\tag{8.1}
-   =\sum_{m=0}^{M-1}\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t + \(m + 1\)\Delta t\)\]n_{ij_m}^I - \frac{\delta}{M}\gamma_\nu^i\(t + \(m + 1\)\Delta t\)
-\end{equation}
-
-\begin{equation}\tag{9}
-   \frac{d\gamma_\nu^i}{dt}=\sum_{m=0}^{M-1}\[\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t\)\]n_{ij_m}^I\] - \delta\gamma_\nu^i\(t\)
-\end{equation}
+\begin{align}\nonumber
+   & =\sum_{m=0}^{M-1}\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t + \(m + 1\)\Delta t\)\]n_{ij_m}^I - \frac{\delta}{M}\gamma_\nu^i\(t + \(m + 1\)\Delta t\)\tag{8.1}
+   \\\\ \frac{d\gamma_\nu^i}{dt} & =\sum_{m=0}^{M-1}\[\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t\)\]n_{ij_m}^I\] - \delta\gamma_\nu^i\(t\)\tag{9}
+\end{align}
