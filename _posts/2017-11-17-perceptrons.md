@@ -56,7 +56,7 @@ In the next step the authors obtain an expression for the difference between the
 
 In words, equation 5 states that the change in the weight for a particular connection when shown two images is made up of both an increment term and a decrement term. The increment term is the product of a learning rate (\\(\eta\\)) and two binary variables which represent the activations of each of the neurons. That is, if the layer one neuron is active for the first image (\\(e_{\mu j} = 1\\)) and the layer two neuron is active for the second image (\\(\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\] = 1\\)) we increment by the learning rate, \\(\eta\\). Actually, we increment by \\(\eta\Delta t\\), but this is purely to preserve the learning rate when we subsequently take the gradient with respect to \\(t\\). In neuroscience we might say that these neurons are coordinated and therefore exhibit an increase in synaptic efficacy.
 
-For the next step, the authors obtain an expression for the change in total weight input (\\(\gamma_\nu^i\\)) to a unit (\\(a_\nu^{II}\\)) in the second layer over one timestep. This derivation is somewhat straight-forward. However, I said we'd look at all the maths, simple or otherwise. So, we begin with our expression from equation 3 and take the difference between \\(t_0 + 2\Delta t\\) and \\(t_0 + \Delta t\\) as in equation 5.1. Next, as addition and subtraction are associative, we can compress the sum to obtain equation 5.2. Finally, as in the paper, we can expand out the \\(e_{\mu i}\\) term to form equation 5.3.
+For the next step, the authors obtain an expression for the change in total weight input (\\(\gamma_\nu^i\\)) to a unit (\\(a_\nu^{II}\\)) in the second layer over one timestep when presented with some stimulus \\(i\\). This derivation is somewhat straight-forward. However, I said we'd look at all the maths, simple or otherwise. So, we begin with our expression from equation 3 and take the difference between \\(t_0 + 2\Delta t\\) and \\(t_0 + \Delta t\\) as in equation 5.1. Next, as addition and subtraction are associative, we can compress the sum to obtain equation 5.2. Finally, as in the paper, we can expand out the \\(e_{\mu i}\\) term to form equation 5.3.
 
 \begin{align}\nonumber
   \gamma_\nu^i\(t_0 + 2\Delta t\) &- \gamma_\nu^i\(t_0 + \Delta t\) \\\\ & =\sum_{\mu} \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) e_{\mu i} - \sum_{\mu} \upsilon_{\mu\nu}\(t_0 + \Delta t\) e_{\mu i}\tag{5.1}
@@ -82,4 +82,30 @@ Next, we insert the \\(\gamma_\nu^i\\) term from equation 3 and define \\(n_{ij}
 
 where \\(n_{ij}^I = \sum_{\mu} e_{\mu j}e_{\mu i}\\). Note that in the paper, they omit the subscript \\(\nu\\) for brevity.
 
-We now wish to define a sequence of stimuli which will be shown to the network. The notation in the paper is somewhat confusing as the authors define a sequence \\(S_{j0}, S_{j1},\cdot\cdot\cdot, S_{jM}\\). This makes it unclear as to whether this is simply a sequence containing \\(M\\) copies of the \\(j^{\text{th}}\\) image, or a sequence of \\(M\\) images sampled from the set of all possible images, \\(S\\). I believe it is the latter, the presence of \\(j\\) indicating that this stimulus is simply one of the possible stimuli, sampled with replacement. We therefore have that some image in our sequence, \\(S_{jm}\\), is the \\(j^{\text{th}}\\) image in \\(S\\) being presented to the network at time \\(t_0 + m\Delta t\\).
+We now wish to define a sequence of stimuli which will be shown to the network. The notation in the paper is somewhat confusing as the authors define a sequence \\(S_{j0}, S_{j1},\cdot\cdot\cdot, S_{jM}\\). This makes it unclear as to whether this is simply a sequence containing \\(M\\) copies of the \\(j^{\text{th}}\\) image, or a sequence of \\(M\\) images sampled from the set of all possible images, \\(S\\). I believe it is the latter, the presence of \\(j\\) indicating that this stimulus is simply one of the possible stimuli, sampled with replacement. We therefore have that some image in our sequence, \\(S_{jm}\\), is the \\(j^{\text{th}}\\) image in \\(S\\) being presented to the network at time \\(t_0 + m\Delta t\\). We now seek to obtain an expression for the change in weighted input to some unit in the second associator layer as we move through the sequence. To do this, we take \\(t_0\\) to be \\(t + m\Delta t\\) from equation 6 to get equation 7. In other words, if my network has 'seen' all stimuli up to \\(m\\), and I now show it stimulus \\(m + 1\\), what is the change in activation for some stimulus \\(i\\).
+
+\begin{align}\nonumber
+   \gamma_\nu^i\(t + \(m + 2\)\Delta t\) &- \gamma_\nu^i\(t + \(m + 1\)\Delta t\)
+   \\\\ & =\(\eta\Delta t\)\Phi\[\alpha_\nu^{j_{m+1}}\(t + \(m + 1\)\Delta t\)\]n_{ij_m}^I - \(\delta\Delta t\)\gamma_\nu^i\(t + \(m + 1\)\Delta t\)\tag{7}
+\end{align}
+
+Now, we wish to aggregate this change over the whole sequence. That is, if I present images to my network in sequence, what is the change over the whole sequence in terms of my responses to some stimulus \\(i\\). We define this as in equation 8, summing over each stimulus (\\(m\\)) in the sequence.
+
+\begin{align}\nonumber
+   \gamma_\nu^i\(t + \(M + 1\)\Delta t\) &- \gamma_\nu^i\(t + \Delta t\)
+   \\\\ & =\sum_{m=0}^{M-1}\(\eta\Delta t\)\Phi\[\alpha_\nu^{j_{m+1}}\(t + \(m + 1\)\Delta t\)\]n_{ij_m}^I - \(\delta\Delta t\)\gamma_\nu^i\(t + \(m + 1\)\Delta t\)\tag{8}
+\end{align}
+
+The authors now say that we divide by \\(M\Delta t\\) and take \\(\lim_{\Delta t \to 0}\\). This is gradient by definition as shown in the graph below. Here we can see that if we let \\(\Delta t\\) approach zero, we reach an expression for the gradient of \\(y\\) with respect to \\(t\\). We divide by \\(M\Delta t\\) as we are considering \\(M\\) steps of size \\(\Delta t\\).
+
+<img src="/assets/gradient.svg" class="figure d-block mx-auto" alt="Gradient" title="Gradient Diagram">
+
+Dividing by \\(M\Delta t\\), we obtain equation 8.1. Then we set \\(\Delta t\\) to zero to reach equation 9. Note that we accumulate \\(\frac{\delta\gamma_\nu^i\(t\)}{M}\\) \\(M\\) times and therefore we can simply move it outside of the sum as it does not depend on \\(m\\).
+
+\begin{equation}\tag{8.1}
+   =\sum_{m=0}^{M-1}\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t + \(m + 1\)\Delta t\)\]n_{ij_m}^I - \frac{\delta}{M}\gamma_\nu^i\(t + \(m + 1\)\Delta t\)
+\end{equation}
+
+\begin{equation}\tag{9}
+   \frac{d\gamma_\nu^i}{dt}=\sum_{m=0}^{M-1}\[\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t\)\]n_{ij_m}^I\] - \delta\gamma_\nu^i\(t\)
+\end{equation}
