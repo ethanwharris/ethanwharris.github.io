@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-links
 title:  "[WIP] Analysis of a Four-Layer Series-Coupled Perceptron. II"
 excerpt: "Understanding the maths of Block, Knight and Rosenblatt"
 date:   2017-11-17 11:00:00

@@ -1,0 +1,27 @@
+---
+layout: post
+---
+
+{% capture _content %}
+  {{ content }}
+{% endcapture %}
+
+{% assign _headers = "h1 h2 h3 h4 h5" | split: " " %}
+
+{% for _header in _headers %}
+  {% capture _tag %}</{{ _header }}>{% endcapture %}
+  {% assign _lines = _content | split: _tag %}
+  {% assign _newcontent = "" %}
+  {% assign _lastline = _lines | last %}
+
+  {% for _line in _lines %}
+    {% unless _line == _lastline %}
+      {% assign _id = _line | split: 'id="' | last | split: '"' | first %}
+      {% assign _link = '<a href="#' | append: _id | append: '"><i class="fa fa-link"></i></a>' %}
+      {% assign _newcontent = _newcontent | append: _line | append: _link | append: _tag %}
+    {% endunless %}
+  {% endfor %}
+  {% assign _content = _newcontent | append: _lastline %}
+{% endfor %}
+
+{{ _content }}
