@@ -42,17 +42,11 @@ In words, this equation states that we have an input of \\(\theta\\) if the corr
 
 Equations 2, 3 and 4 simply redefine the \\(\theta\\) signal as a bias term \\(\beta_\nu\\) and the weighted sum as a function of time \\(\gamma_\nu\(t\)\\).
 
-\begin{equation} \tag{2}
-   \beta_\nu^i = \theta e_{\nu i}
-\end{equation}
-
-\begin{equation} \tag{3}
-   \gamma_\nu^i\(t\)=\sum_{\mu} \upsilon_{\mu\nu}\(t\) e_{\mu i}
-\end{equation}
-
-\begin{equation} \tag{4}
-   \alpha_\nu^i\(t\)=\beta_\nu^i + \gamma_\nu^i\(t\)
-\end{equation}
+\begin{align}\nonumber
+   \beta_\nu^i & = \theta e_{\nu i}\tag{2}
+   \\\\ \gamma_\nu^i\(t\) & =\sum_{\mu} \upsilon_{\mu\nu}\(t\) e_{\mu i}\tag{3}
+   \\\\ \alpha_\nu^i\(t\) & =\beta_\nu^i + \gamma_\nu^i\(t\)\tag{4}
+\end{align}
 
 In the next step the authors obtain an expression for the difference between the weights in the second layer over a single time step. Specifically, moving from \\(t_0 + \Delta t\\) with stimulus \\(j\\) to \\(t_0 + 2\Delta t\\) with stimulus \\(k\\), what is the change in the connection weight (\\(\upsilon_{\mu\nu}\\)) between units \\(a_\mu^I\\) and \\(a_\nu^{II}\\). Note that we define a threshold function (\\(\Phi\(x\)\\)) here which outputs \\(1\\) if \\(x \geq \theta\\) and \\(0\\) otherwise.
 
@@ -79,11 +73,11 @@ We now substitute equation 5 back into equation 5.3, giving equation 5.4. Next w
    \\\\ & =\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\sum_{\mu} e_{\mu j}e_{\mu i} - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)\tag{5.7}
 \end{align}
 
-Next, we define \\(n_{ij}^I\\) to be the number of associator units in the first layer (\\(A^I\\)) which are active for both stimulus \\(i\\) and stimulus \\(j\\) to give equation 6 from the paper
+Next, we insert the \\(\gamma_\nu^i\\) term from equation 3 and define \\(n_{ij}^I\\) to be the number of associator units in the first layer (\\(A^I\\)) which are active for both stimulus \\(i\\) and stimulus \\(j\\). This gives equation 6 from the paper
 
 \begin{align}\nonumber
    \gamma_\nu^i\(t_0 + 2\Delta t\) &- \gamma_\nu^i\(t_0 + \Delta t\)
-   \\\\ & =\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]n_{ij}^I - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)\tag{6}
+   \\\\ & =\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]n_{ij}^I - \(\delta\Delta t\)\gamma_\nu^i\(t_0 + \Delta t\)\tag{6}
 \end{align}
 
-where \\(n_{ij}^I = \sum_{\mu} e_{\mu j}e_{\mu i}\\).
+where \\(n_{ij}^I = \sum_{\mu} e_{\mu j}e_{\mu i}\\). Note that in the paper, they omit the subscript \\(\nu\\) for brevity.
