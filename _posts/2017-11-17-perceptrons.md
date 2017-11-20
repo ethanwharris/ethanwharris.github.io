@@ -61,3 +61,43 @@ In the next step the authors obtain an expression for the difference between the
 \end{equation}
 
 In words, equation 5 states that the change in the weight for a particular connection when shown two images is made up of both an increment term and a decrement term. The increment term is the product of a learning rate (\\(\eta\\)) and two binary variables which represent the activations of each of the neurons. That is, if the layer one neuron is active for the first image (\\(e_{\mu j} = 1\\)) and the layer two neuron is active for the second image (\\(\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\] = 1\\)) we increment by the learning rate, \\(\eta\\). Actually, we increment by \\(\eta\Delta t\\), but this is purely to preserve the learning rate when we subsequently take the gradient with respect to \\(t\\). In neuroscience we might say that these neurons are coordinated and therefore exhibit an increase in synaptic efficacy.
+
+For the next step, the authors obtain an expression for the change in total weight input (\\(\gamma_\nu^i\\)) to a unit (\\(a_\nu^{II}\\)) in the second layer over one timestep. This derivation is somewhat straight-forward. However, I said we'd look at all the maths, simple or otherwise. So, we begin with our expression from equation 3 and take the difference between \\(t_0 + 2\Delta t\\) and \\(t_0 + \Delta t\\) as in equation 5.1. Next, as addition and subtraction are associative, we can compress the sum to obtain equation 5.2. Finally, as in the paper, we can expand out the \\(e_{\mu i}\\) term to form equation 5.3.
+
+\begin{equation} \tag{5.1}
+   \gamma_\nu^i\(t_0 + 2\Delta t\) - \gamma_\nu^i\(t_0 + \Delta t\)=\sum_{\mu} \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) e_{\mu i} - \sum_{\mu} \upsilon_{\mu\nu}\(t_0 + \Delta t\) e_{\mu i}
+\end{equation}
+
+\begin{equation} \tag{5.2}
+   =\sum_{\mu} \upsilon_{\mu\nu}\(t_0 + 2\Delta t\) e_{\mu i} - \upsilon_{\mu\nu}\(t_0 + \Delta t\) e_{\mu i}
+\end{equation}
+
+\begin{equation} \tag{5.3}
+   =\sum_{\mu} \[\upsilon_{\mu\nu}\(t_0 + 2\Delta t\) - \upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}
+\end{equation}
+
+We now substitute equation 5 back into equation 5.3, giving equation 5.4. Next we expand the sum to give equations 5.5 and 5.6. As \\(\eta\Delta t\\), \\(\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\\) and \\(\delta\Delta t\\) are not dependant on \\(\mu\\), we can move them outside of their respective sums to give equation 5.7 as in the paper.
+
+\begin{equation} \tag{5.4}
+   =\sum_{\mu} \[\(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\] - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}
+\end{equation}
+
+\begin{equation} \tag{5.5}
+   =\sum_{\mu} \(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\(e_{\mu i}\) - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
+\end{equation}
+
+\begin{equation} \tag{5.6}
+   =\sum_{\mu} \(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\(e_{\mu i}\) - \sum_{\mu}\(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
+\end{equation}
+
+\begin{equation} \tag{5.7}
+   =\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\sum_{\mu} e_{\mu j}e_{\mu i} - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
+\end{equation}
+
+Next, we define \\(n_{ij}^I\\) to be the number of associator units in the first layer (\\(A^I\\)) which are active for both stimulus \\(i\\) and stimulus \\(j\\) to give equation 6 from the paper
+
+\begin{equation} \tag{6}
+   \gamma_\nu^i\(t_0 + 2\Delta t\) - \gamma_\nu^i\(t_0 + \Delta t\)=\(\eta\Delta t\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]n_{ij}^I - \(\delta\Delta t\)\sum_{\mu}\upsilon_{\mu\nu}\(t_0 + \Delta t\)\(e_{\mu i}\)
+\end{equation}
+
+where \\(n_{ij}^I = \sum_{\mu} e_{\mu j}e_{\mu i}\\).
