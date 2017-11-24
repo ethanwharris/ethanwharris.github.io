@@ -64,7 +64,7 @@ For the next step, the authors obtain an expression for the change in total weig
   \\\\ & =\sum_{\mu} \[\upsilon_{\mu\nu}\(t_0 + 2\Delta t\) - \upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}\tag{5.3}
 \end{align}
 
-We now substitute equation 5 back into equation 5.3, giving equation 5.4. Next we expand the sum to give equations 5.5 and 5.6. As \\(\eta\Delta t\\), \\(\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\\) and \\(\delta\Delta t\\) are not dependant on \\(\mu\\), we can move them outside of their respective sums to give equation 5.7 as in the paper.
+We now substitute equation 5 back into equation 5.3, giving equation 5.4. Next we expand the sum to give equations 5.5 and 5.6. As \\(\eta\Delta t\\), \\(\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\]\\) and \\(\delta\Delta t\\) are not dependent on \\(\mu\\), we can move them outside of their respective sums to give equation 5.7 as in the paper.
 
 \begin{align}\nonumber
    & =\sum_{\mu} \[\(\eta\Delta t\)\(e_{\mu j}\)\Phi\[\alpha_\nu^k\(t_0 + \Delta t\)\] - \(\delta\Delta t\)\upsilon_{\mu\nu}\(t_0 + \Delta t\)\] e_{\mu i}\tag{5.4}
@@ -109,7 +109,7 @@ Dividing by \\(M\Delta t\\), we obtain equation 8.1. Then we set \\(\Delta t\\) 
 
 Moving from equation 9 to equation 10 in the paper is not immediately trivial. First we define \\(F_{jk}\\) as in the paper to be the number of times the pair \\(S_j S_k\\) occurs in the sequence. Next, we say that the sum over all \\(m\\) in equation 9 will visit each pair in the sequence in turn. If a pair occurs twice in the sequence we will add the value inside the sum twice for that pair. In fact, for each pair that occurs we have \\(F_{jk}\\) additions.
 
-Now consider that we may instead wish to perform a dual summation over all possible pairs of stimuli but obtain the same result as in equation 9. For this summation, we will only visit each pair once, even if it occurs multiple times in the sequence. We will also visit any possible pairs which are not present in the sequence. We therfore wish to multiply each value in the sum by the number of times the pair occurs. Conveniently, we have already defined this value \\(F_{jk}\\). Doing this we obtain equation 9.1 below.
+Now consider that we may instead wish to perform a dual summation over all possible pairs of stimuli but obtain the same result as in equation 9. For this summation, we will only visit each pair once, even if it occurs multiple times in the sequence. We will also visit any possible pairs which are not present in the sequence. We therefore wish to multiply each value in the sum by the number of times the pair occurs. Conveniently, we have already defined this value \\(F_{jk}\\). Doing this we obtain equation 9.1 below.
 
 \begin{equation}\tag{9.1}
    \frac{d\gamma_\nu^i}{dt}=\sum_{j=1}^{n}\sum_{k=1}^{n}\left( F_{jk}\frac{\eta}{M}\Phi\[\alpha_\nu^{k}\(t\)\]n_{ij}^I \right) - \delta\gamma_\nu^i\(t\)
@@ -121,7 +121,7 @@ Now that we have equation 9.1, the next move is trivial. As in the paper we defi
    \frac{d\gamma_\nu^i}{dt}=\sum_{j=1}^{n}\sum_{k=1}^{n}\left( \eta f_{jk}\Phi\[\alpha_\nu^{k}\(t\)\]n_{ij}^I \right) - \delta\gamma_\nu^i\(t\)
 \end{equation}
 
-Now, lets take stock for a moment. So far, we have produced a series of equations which describe the dynamics of the network (equations 1-4). We have subsequently considered how these dynamics change with time (equation 5). Specifically, we have obtained equations which describe how the total input to units in the second layer changes as a function of learning rate and as we traverse a sequence of inputs (equations 6 and 7). We have then produced an expression for the total change in dyanmics, obvserving an entire sequence. Next, we have said that for very small intervals, we can obtain a derivative with respect to time (equation 9). That is, an equation which models the change in weighted input to units in the second layer over time for a given sequence. Finally, we have demonstrated that this derivative can be thought of as a sum over all possible pairs for a set of stimuli with some filter term \\(f_{jk}\\) (equation 10).
+Now, lets take stock for a moment. So far, we have produced a series of equations which describe the dynamics of the network (equations 1-4). We have subsequently considered how these dynamics change with time (equation 5). Specifically, we have obtained equations which describe how the total input to units in the second layer changes as a function of learning rate and as we traverse a sequence of inputs (equations 6 and 7). We have then produced an expression for the total change in dynamics, observing an entire sequence. Next, we have said that for very small intervals, we can obtain a derivative with respect to time (equation 9). That is, an equation which models the change in weighted input to units in the second layer over time for a given sequence. Finally, we have demonstrated that this derivative can be thought of as a sum over all possible pairs for a set of stimuli with some filter term \\(f_{jk}\\) (equation 10).
 
 In the next step, we swap the indices \\(j\\) and \\(k\\). This can cause some confusion so we do this explicitly in equation 10.1. Nopte that we have not changed any of the meaning in the equation.
 
@@ -136,7 +136,7 @@ We may now define the matrix \\(K_{ij}\\) as in the paper to produce equation 11
    \\\\ \frac{d\gamma_\nu^i}{dt} &=\eta\sum_{j=1}^{n}\left( K_{ij} \Phi\[\beta_\nu^j + \gamma_\nu^j\(t\)\] \right) - \delta\gamma_\nu^i\(t\)\tag{11}
 \end{align}
 
-Given equation 11, we can consider the equilibrium case. This is obtained by setting the derivative to zero and arranging for \\(\gamma_\nu^i\\). Equations 11.1, 11.2 and 12 show this explicitly. Note that we now consider \\(f_{kj}\\) and thus \\(K_{ij}\\) to be constant and so remove the dependancy on time.
+Given equation 11, we can consider the equilibrium case. This is obtained by setting the derivative to zero and arranging for \\(\gamma_\nu^i\\). Equations 11.1, 11.2 and 12 show this explicitly. Note that we now consider \\(f_{kj}\\) and thus \\(K_{ij}\\) to be constant and so remove the dependency on time.
 
 \begin{align}\nonumber
    0 &=\eta\sum_{j=1}^{n}\left( K_{ij} \Phi\[\beta_\nu^j + \gamma_\nu^j\] \right) - \delta\gamma_\nu^i\tag{11.1}
@@ -150,13 +150,13 @@ As a next step the authors prove that equation 12 has a unique minimal solution.
 
 - First, consider that the stimulus \\(i\\) is a frame of reference. That is, we consider change of weights over time in the context of a response to some \\(i\\).
 - Next, we observe that in equation 8 we consider the total change after observing the whole sequence.
-- We may now state that the deriviative in equation 9 is the rate of change in weights observing the whole sequence with respect to time.
+- We may now state that the derivative in equation 9 is the rate of change in weights observing the whole sequence with respect to time.
 - The set of \\(\gamma^j\\) values which satisfy the equilibrium equation 12 are therefore the values for which, after observing the whole sequence, no change in \\(\gamma^i\\) will be observed.
-- In other words, the number of iterations required to reach \\(\gamma^j\\) which staisfy equation 12 is the number of epochs required for convergence.
+- In other words, the number of iterations required to reach \\(\gamma^j\\) which satisfy equation 12 is the number of epochs required for convergence.
 
 ## Proof
 
-We now proceed to the proof that a unique minimal solution exists to equation 12. The first step is to turn equation 12 into an iterative equation. That is, given a starting value for all \\(\gamma^j\\), iteratively obtain new values \\(\gamma^i\\) by resubstituting into the equation. From our interpretation above, we can say that this is akin to asking, given some intial set of weights, what will the weights be after each iteration of the sequence. The result of this is in equation 13, where \\(m\\) is the iteration number and \\(\gamma_{\nu_0}^i = 0\\) for all second layer units \\(\nu\\).
+We now proceed to the proof that a unique minimal solution exists to equation 12. The first step is to turn equation 12 into an iterative equation. That is, given a starting value for all \\(\gamma^j\\), iteratively obtain new values \\(\gamma^i\\) by re-substituting into the equation. From our interpretation above, we can say that this is akin to asking, given some initial set of weights, what will the weights be after each iteration of the sequence. The result of this is in equation 13, where \\(m\\) is the iteration number and \\(\gamma_{\nu_0}^i = 0\\) for all second layer units \\(\nu\\).
 
 \begin{equation}\tag{13}
    \gamma_{\nu_{m + 1}}^i =\frac{\eta}{\delta}\sum_{j=1}^{n} K_{ij} \Phi\[\beta_\nu^j + \gamma_{\nu_m}^j\]
