@@ -104,5 +104,19 @@ Dividing by \\(M\Delta t\\), we obtain equation 8.1. Then we set \\(\Delta t\\) 
 
 \begin{align}\nonumber
    & =\sum_{m=0}^{M-1}\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t + \(m + 1\)\Delta t\)\]n_{ij_m}^I - \frac{\delta}{M}\gamma_\nu^i\(t + \(m + 1\)\Delta t\)\tag{8.1}
-   \\\\ \frac{d\gamma_\nu^i}{dt} & =\sum_{m=0}^{M-1}\[\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t\)\]n_{ij_m}^I\] - \delta\gamma_\nu^i\(t\)\tag{9}
+   \\\\ \frac{d\gamma_\nu^i}{dt} & =\sum_{m=0}^{M-1}\left(\frac{\eta}{M}\Phi\[\alpha_\nu^{j_{m+1}}\(t\)\]n_{ij_m}^I\right) - \delta\gamma_\nu^i\(t\)\tag{9}
 \end{align}
+
+Moving from equation 9 to equation 10 in the paper is not immediately trivial. First we define \\(F_{jk}\\) as in the paper to be the number of times the pair \\(S_j S_k\\) occurs in the sequence. Next, we say that the sum over all \\(m\\) in equation 9 will visit each pair in the sequence in turn. If a pair occurs twice in the sequence we will add the value inside the sum twice for that pair. In fact, for each pair that occurs we have \\(F_{jk}\\) additions.
+
+Now consider that we may instead wish to perform a dual summation over all possible pairs of stimuli but obtain the same result as in equation 9. For this summation, we will only visit each pair once, even if it occurs multiple times in the sequence. We will also visit any possible pairs which are not present in the sequence. We therfore wish to multiply each value in the sum by the number of times the pair occurs. Conveniently, we have already defined this value \\(F_{jk}\\). Doing this we obtain equation 9.1 below.
+
+\begin{equation}\tag{9.1}
+   \frac{d\gamma_\nu^i}{dt}=\sum_{j=0}^{n}\sum_{k=0}^{n}\left( F_{jk}\frac{\eta}{M}\Phi\[\alpha_\nu^{k}\(t\)\]n_{ij}^I \right) - \delta\gamma_\nu^i\(t\)
+\end{equation}
+
+Now that we have equation 9.1, the next move is trivial. As in the paper we define \\(f_{jk} = F_{jk} / M\\) and obtain equation 10.
+
+\begin{equation}\tag{10}
+   \frac{d\gamma_\nu^i}{dt}=\sum_{j=0}^{n}\sum_{k=0}^{n}\left( \eta f_{jk}\Phi\[\alpha_\nu^{k}\(t\)\]n_{ij}^I \right) - \delta\gamma_\nu^i\(t\)
+\end{equation}
