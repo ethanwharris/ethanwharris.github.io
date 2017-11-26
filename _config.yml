@@ -24,6 +24,7 @@ navigation:
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-gist
 markdown: kramdown
 permalink: pretty
 exclude:
