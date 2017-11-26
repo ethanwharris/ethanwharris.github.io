@@ -2,11 +2,19 @@
 layout: post
 ---
 
+{% comment %}
+  Capture content from child as _content and generate list of valid header tags
+{% endcomment %}
+
 {% capture _content %}
   {{ content }}
 {% endcapture %}
 
 {% assign _headers = "h1 h2 h3 h4 h5" | split: " " %}
+
+{% comment %}
+  For each header, append internal link to tag
+{% endcomment %}
 
 {% for _header in _headers %}
   {% capture _tag %}</{{ _header }}>{% endcapture %}
@@ -23,5 +31,9 @@ layout: post
   {% endfor %}
   {% assign _content = _newcontent | append: _lastline %}
 {% endfor %}
+
+{% comment %}
+  Display altered content with added links
+{% endcomment %}
 
 {{ _content }}
