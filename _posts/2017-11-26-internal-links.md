@@ -4,6 +4,7 @@ title:  "Internal Links on GitHub Pages with Jekyll"
 excerpt: "Using pure Liquid to add internal links to header tags on GitHub pages"
 date:   2017-11-26 16:00:00
 mathjax: false
+published: false
 comments: true
 ---
 
